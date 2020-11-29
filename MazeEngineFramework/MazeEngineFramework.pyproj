@@ -1,0 +1,122 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>37356730-ed76-4962-9f94-2ad5d61fb70a</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>MazeEngineFramework</Name>
+    <RootNamespace>MazeEngineFramework</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BomberbanRemasterd\ControladorBomberman.py" />
+    <Compile Include="BomberbanRemasterd\Entidades\Bloques\Bloque1.py" />
+    <Compile Include="BomberbanRemasterd\Entidades\Bloques\Bloque2.py" />
+    <Compile Include="BattleCityUltimate\ControladorBattleCity.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Bloques\Bloque2.py" />
+    <Compile Include="BattleCityUltimate\Entidades\Bloques\Bloque1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Interactuable\Bandera\Bandera.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Interactuable\Bandera\DepositoBandera.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Interactuable\Poderes\Poder2.py" />
+    <Compile Include="BattleCityUltimate\Entidades\Interactuable\Poderes\Poder1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Tanques\TanqueEnemigo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\Entidades\Tanques\TanqueJugador.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BomberbanRemasterd\Entidades\Interactuable\Bomba.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Bloque\ME_Bloque_Indestructible.py" />
+    <Compile Include="ME_Framework\Bloque\ME_Bloque_Destructible.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Entidad\ME_Entidad_Manipulable.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Laberinto\ME_Laberinto_Controlador.py" />
+    <Compile Include="ME_Framework\Principal\ME_Controlador.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Entidad\ME_Entidad.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Entidad\ME_Entidad_Autonoma.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Laberinto\ME_Laberinto.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Laberinto\ME_Laberinto_Loader.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Principal\ME_Menu.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BattleCityUltimate\Recursos\" />
+    <Folder Include="BattleCityUltimate\Niveles\" />
+    <Folder Include="BattleCityUltimate\Recursos\Imagenes\" />
+    <Folder Include="BattleCityUltimate\Recursos\Sonidos\" />
+    <Folder Include="BomberbanRemasterd\" />
+    <Folder Include="BomberbanRemasterd\Entidades\" />
+    <Folder Include="BomberbanRemasterd\Entidades\Bloques\" />
+    <Folder Include="BomberbanRemasterd\Entidades\Interactuable\" />
+    <Folder Include="BattleCityUltimate\Entidades\" />
+    <Folder Include="BattleCityUltimate\Entidades\Bloques\" />
+    <Folder Include="BattleCityUltimate\Entidades\Interactuable\Bandera\" />
+    <Folder Include="BattleCityUltimate\Entidades\Interactuable\Poderes\" />
+    <Folder Include="BattleCityUltimate\Entidades\Tanques\" />
+    <Folder Include="BattleCityUltimate\Entidades\Interactuable\" />
+    <Folder Include="BomberbanRemasterd\Imagenes\" />
+    <Folder Include="BomberbanRemasterd\Niveles\" />
+    <Folder Include="BomberbanRemasterd\Recursos\" />
+    <Folder Include="BomberbanRemasterd\Recursos\Imagenes\" />
+    <Folder Include="BomberbanRemasterd\Recursos\Sonidos\" />
+    <Folder Include="BomberbanRemasterd\Sonidos\" />
+    <Folder Include="ME_Framework\" />
+    <Folder Include="BattleCityUltimate\" />
+    <Folder Include="ME_Framework\Entidad\" />
+    <Folder Include="ME_Framework\Laberinto\" />
+    <Folder Include="ME_Framework\Bloque\" />
+    <Folder Include="ME_Framework\Principal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BattleCityUltimate\Niveles\Nivel_1.txt" />
+    <Content Include="BomberbanRemasterd\Niveles\Nivel_1.mapa" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
