@@ -93,7 +93,6 @@
     <Folder Include="BattleCityUltimate\Entidades\Interactuable\Poderes\" />
     <Folder Include="BattleCityUltimate\Entidades\Tanques\" />
     <Folder Include="BattleCityUltimate\Entidades\Interactuable\" />
-    <Folder Include="BomberbanRemasterd\Imagenes\" />
     <Folder Include="BomberbanRemasterd\Niveles\" />
     <Folder Include="BomberbanRemasterd\Recursos\" />
     <Folder Include="BomberbanRemasterd\Recursos\Imagenes\" />
