@@ -22,9 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BomberbanRemasterd\ControladorBomberman.py" />
-    <Compile Include="BomberbanRemasterd\Entidades\Bloques\Bloque1.py" />
-    <Compile Include="BomberbanRemasterd\Entidades\Bloques\Bloque2.py" />
+    <Compile Include="BomberbanRemastered\ControladorBomberman.py" />
+    <Compile Include="BomberbanRemastered\Entidades\Bloques\Bloque1.py" />
+    <Compile Include="BomberbanRemastered\Entidades\Bloques\Bloque2.py" />
     <Compile Include="BattleCityUltimate\ControladorBattleCity.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,7 +48,7 @@
     <Compile Include="BattleCityUltimate\Entidades\Tanques\TanqueJugador.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BomberbanRemasterd\Entidades\Interactuable\Bomba.py">
+    <Compile Include="BomberbanRemastered\Entidades\Interactuable\Bomba.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ME_Framework\Bloque\ME_Bloque_Indestructible.py" />
@@ -83,20 +83,20 @@
     <Folder Include="BattleCityUltimate\Niveles\" />
     <Folder Include="BattleCityUltimate\Recursos\Imagenes\" />
     <Folder Include="BattleCityUltimate\Recursos\Sonidos\" />
-    <Folder Include="BomberbanRemasterd\" />
-    <Folder Include="BomberbanRemasterd\Entidades\" />
-    <Folder Include="BomberbanRemasterd\Entidades\Bloques\" />
-    <Folder Include="BomberbanRemasterd\Entidades\Interactuable\" />
+    <Folder Include="BomberbanRemastered\" />
+    <Folder Include="BomberbanRemastered\Entidades\" />
+    <Folder Include="BomberbanRemastered\Entidades\Bloques\" />
+    <Folder Include="BomberbanRemastered\Entidades\Interactuable\" />
     <Folder Include="BattleCityUltimate\Entidades\" />
     <Folder Include="BattleCityUltimate\Entidades\Bloques\" />
     <Folder Include="BattleCityUltimate\Entidades\Interactuable\Bandera\" />
     <Folder Include="BattleCityUltimate\Entidades\Interactuable\Poderes\" />
     <Folder Include="BattleCityUltimate\Entidades\Tanques\" />
     <Folder Include="BattleCityUltimate\Entidades\Interactuable\" />
-    <Folder Include="BomberbanRemasterd\Niveles\" />
-    <Folder Include="BomberbanRemasterd\Recursos\" />
-    <Folder Include="BomberbanRemasterd\Recursos\Imagenes\" />
-    <Folder Include="BomberbanRemasterd\Recursos\Sonidos\" />
+    <Folder Include="BomberbanRemastered\Niveles\" />
+    <Folder Include="BomberbanRemastered\Recursos\" />
+    <Folder Include="BomberbanRemastered\Recursos\Imagenes\" />
+    <Folder Include="BomberbanRemastered\Recursos\Sonidos\" />
     <Folder Include="ME_Framework\" />
     <Folder Include="BattleCityUltimate\" />
     <Folder Include="ME_Framework\Entidad\" />
@@ -106,7 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BattleCityUltimate\Niveles\Nivel_1.txt" />
-    <Content Include="BomberbanRemasterd\Niveles\Nivel_1.mapa" />
+    <Content Include="BomberbanRemastered\Niveles\Nivel_1.mapa" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
