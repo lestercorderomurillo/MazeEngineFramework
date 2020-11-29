@@ -98,7 +98,6 @@
     <Folder Include="BomberbanRemasterd\Recursos\" />
     <Folder Include="BomberbanRemasterd\Recursos\Imagenes\" />
     <Folder Include="BomberbanRemasterd\Recursos\Sonidos\" />
-    <Folder Include="BomberbanRemasterd\Sonidos\" />
     <Folder Include="ME_Framework\" />
     <Folder Include="BattleCityUltimate\" />
     <Folder Include="ME_Framework\Entidad\" />
