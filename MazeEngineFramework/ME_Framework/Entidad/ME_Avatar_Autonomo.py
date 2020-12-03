@@ -12,7 +12,7 @@ class ME_Avatar_Autonomo(ME_Avatar):
 	self.contadorInactividad = 0
 
 
-   def moverAutomático(self):
+   def moverAutomatico(self):
         """Método para el movimiento automático de los avatares"""
 
         if self.vivo:
