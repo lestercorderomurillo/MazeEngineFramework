@@ -1,5 +1,6 @@
 from ME_Avatar_Manipulable import ME_Avatar_Controlable
 import math, enum, pygame
+from Bala import Bala
 
 class TipoTanque(enum.IntEnum):
     """Enumeración de los tipos posibles para los tanques"""
@@ -14,6 +15,8 @@ class TanqueJugador(ME_Avatar_Controlable):
     def __init__(self, x, y, tamanio):
         """Constructor"""
         super().__init__(x, y, tamanio)
+	
+	self.tamanio = tamanio
         self.velocidadMaxima = 4
         self.armadura = 1
         self.puntuacion = 0
@@ -86,6 +89,10 @@ class TanqueJugador(ME_Avatar_Controlable):
         self.direccion = Direccion.Arriba
         self.tipoTanqueActual = TipoTanque.Inicial
         self.cargarSprites(TipoTanque.Inicial)
+
+    def disparar(self,grupoBalas):
+        """Método para disparar"""
+        grupoBalas.add( Bala(self.rect.x,self.rect.y,self.direccion,self.tamanio,0) )
 
 
             
