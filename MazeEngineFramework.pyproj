@@ -1,0 +1,131 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>37356730-ed76-4962-9f94-2ad5d61fb70a</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>BattleCityUltimate\ControladorBattleCity.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>MazeEngineFramework</Name>
+    <RootNamespace>MazeEngineFramework</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BattleCityUltimate\Entidades\ArmaMarda.py" />
+    <Compile Include="BattleCityUltimate\Entidades\Bala.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueAbstracto.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueAgua.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueHojas.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueIndestructible.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueLadrillo.py" />
+    <Compile Include="BattleCityUltimate\Entidades\BloqueMetalico.py" />
+    <Compile Include="BattleCityUltimate\Entidades\DepositoMedalla.py" />
+    <Compile Include="BattleCityUltimate\Entidades\Medalla.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderAbstracto.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderCongelarEnemigos.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderEscudo.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderGranada.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderMejorarTanque.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderReforzarBase.py" />
+    <Compile Include="BattleCityUltimate\Entidades\PoderVidaExtra.py" />
+    <Compile Include="BattleCityUltimate\Entidades\TanqueEnemigo.py" />
+    <Compile Include="BattleCityUltimate\Entidades\TanqueJugador.py" />
+    <Compile Include="BattleCityUltimate\Entidades\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\LaberintoBattleCity.py" />
+    <Compile Include="BattleCityUltimate\MenuBattleCity.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\ControladorBattleCity.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BattleCityUltimate\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\Entidad\ME_Avatar.py" />
+    <Compile Include="ME_Framework\Entidad\ME_Avatar_Autonomo.py" />
+    <Compile Include="ME_Framework\Entidad\ME_Avatar_Controlable.py" />
+    <Compile Include="ME_Framework\Entidad\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\ME_Controlador.py" />
+    <Compile Include="ME_Framework\ME_Laberinto.py" />
+    <Compile Include="ME_Framework\ME_Menu.py" />
+    <Compile Include="ME_Framework\Entidad\ME_Entidad.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ME_Framework\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BattleCityUltimate\Recursos\" />
+    <Folder Include="BattleCityUltimate\Niveles\" />
+    <Folder Include="BattleCityUltimate\Entidades\" />
+    <Folder Include="BattleCityUltimate\Recursos\Imagenes\" />
+    <Folder Include="BattleCityUltimate\Recursos\Imagenes\Menu\" />
+    <Folder Include="BattleCityUltimate\Recursos\Imagenes\Sprites\" />
+    <Folder Include="BattleCityUltimate\Recursos\Mapas\" />
+    <Folder Include="BattleCityUltimate\Recursos\Sonidos\" />
+    <Folder Include="ME_Framework\" />
+    <Folder Include="BattleCityUltimate\" />
+    <Folder Include="ME_Framework\Entidad\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BattleCityUltimate\Niveles\Nivel_1.txt" />
+    <Content Include="BattleCityUltimate\Recursos\8bitOperatorPlus-Bold.ttf" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Controles.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\gameOver.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\HUD1.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\HUD2.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\HUD3.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Menu1.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Menu2.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Menu3.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Reglas.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Menu\Victory.png" />
+    <Content Include="BattleCityUltimate\Recursos\Imagenes\Sprites\Sprites.png" />
+    <Content Include="BattleCityUltimate\Recursos\Mapas\mapa1.data" />
+    <Content Include="BattleCityUltimate\Recursos\Mapas\mapa2.data" />
+    <Content Include="BattleCityUltimate\Recursos\Mapas\mapa3.data" />
+    <Content Include="BattleCityUltimate\Recursos\Mapas\mapa4.data" />
+    <Content Include="BattleCityUltimate\Recursos\Mapas\mapa5.data" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\AgarrarPoder.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\AparecePoder.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Armadura.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\CambiaTipo.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\DestruirEnemigo.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\DestruirPared.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Disparo.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\EntregarBandera.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\EntregarMedalla.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Ganar.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Inicio.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Morir.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Motor.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\MotorMoviendo.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\OpcionMenu.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Pausa.ogg" />
+    <Content Include="BattleCityUltimate\Recursos\Sonidos\Perder.ogg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
