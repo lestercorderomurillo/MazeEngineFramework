@@ -64,7 +64,7 @@ class ME_Controlador():
                 self.menuAbierto      = True
 
             if self.estadoJuego != EstadoJuego.Jugar:
-                pygame.time.delay(1000)
+                pygame.time.delay(2000)
 
             self.draw()
             

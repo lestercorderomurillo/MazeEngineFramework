@@ -46,8 +46,6 @@ class Bala(ArmaMarda):
 
         self.rect = pygame.Rect(x, y, tamanio/4, tamanio/4)
 
-            
-        
         self.sonidoMorir = pygame.mixer.Sound("./Recursos/Sonidos/DestruirEnemigo.ogg")
         self.sonidoArmadura = pygame.mixer.Sound("./Recursos/Sonidos/Armadura.ogg")
         self.sonidoDestruirBloque = pygame.mixer.Sound("./Recursos/Sonidos/DestruirPared.ogg")
@@ -55,10 +53,9 @@ class Bala(ArmaMarda):
         self.sonidoArmadura.set_volume(0.5)
         self.sonidoMorir.set_volume(0.5)
         self.sonidoDestruirBloque.set_volume(0.5)
-
-        pygame.mixer.Sound("./Recursos/Sonidos/Disparo.ogg").play()
         
-
+        if(self.bando == Bando.Aliado):
+            pygame.mixer.Sound("./Recursos/Sonidos/Disparo.ogg").play()
 
     def update(self, grupoBloques, grupoJugador, grupoEnemigos, grupoBalas, grupoMedallas):
         """Método para actualizar el estado de la entidad proyectil"""

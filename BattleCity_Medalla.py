@@ -28,8 +28,8 @@ class Medalla(ME_Entidad):
 
         self.image = self.imageSrc
 
-        #self.sonidoEntregarMedalla = pygame.mixer.Sound(Constantes.S_BANDERA)
-        #self.sonidoEntregarMedalla.set_volume(Constantes.VOLUMEN)
+        self.sonidoEntregarMedalla = pygame.mixer.Sound("./Recursos/Sonidos/EntregarMedalla.ogg")
+        self.sonidoEntregarMedalla.set_volume(0.5)
 
     def update(self, jugador, deposito):
         """Método para actualizar el estado de la entidad medalla"""
@@ -60,7 +60,7 @@ class Medalla(ME_Entidad):
                     if (self.rect.colliderect(deposito)):
                         self.tomada = False
                         self.rescadasRestantes -= 1
-                        #self.sonidoEntregarMedalla.play()
+                        self.sonidoEntregarMedalla.play()
             else:
                 self.rect.x = self.xInicial
                 self.rect.y = self.yInicial

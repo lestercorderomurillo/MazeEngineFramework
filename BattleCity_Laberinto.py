@@ -56,7 +56,7 @@ class LaberintoBattleCity(ME_Laberinto):
         self.sonidoPausa = pygame.mixer.Sound("./Recursos/Sonidos/Pausa.ogg")
         self.sonidoAgarraPoder = pygame.mixer.Sound("./Recursos/Sonidos/AgarrarPoder.ogg")
         self.sonidoPausa.set_volume(0.5)
-        self.sonidoPausa.set_volume(0.5)
+        self.sonidoAgarraPoder.set_volume(0.5)
         
     def update(self, controlador):
         """Método para actualizar los grupos de sprites"""
