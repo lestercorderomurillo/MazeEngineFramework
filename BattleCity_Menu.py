@@ -18,11 +18,15 @@ class MenuBattleCity(ME_Menu):
         self.controles_png =    pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Controles.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
         self.victoria_png =     pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Victory.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
         self.derrota_png =      pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/GameOver.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
-        
+        self.sonidoPausa = pygame.mixer.Sound("./Recursos/Sonidos/Pausa.ogg")
+        self.sonidoPausa.set_volume(0.5)
+        self.sonidoMoverOpcion = pygame.mixer.Sound("./Recursos/Sonidos/OpcionMenu.ogg")
+        self.sonidoMoverOpcion.set_volume(0.5)
+            
     def evento(self, controlador, evento):
         """"""
         if(evento.type == pygame.KEYDOWN):
-
+            self.sonidoMoverOpcion.play()
             if(evento.key == pygame.K_DOWN):
                 if(controlador.menuAbierto and controlador.ejecutandoInicio):
                     if(self.estadoActual != Menu.Reglas):
@@ -54,6 +58,7 @@ class MenuBattleCity(ME_Menu):
 
             elif(evento.key == pygame.K_ESCAPE):
                 if(controlador.menuAbierto and not controlador.ejecutandoInicio):
+                    self.sonidoPausa.play()
                     controlador.menuAbierto = False
                 elif(self.estadoActual == Menu.Controles):
                     self.estadoActual = Menu.MenuPrincipal2

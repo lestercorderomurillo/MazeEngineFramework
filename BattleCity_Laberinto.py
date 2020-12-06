@@ -53,7 +53,11 @@ class LaberintoBattleCity(ME_Laberinto):
         self.interfaz = Interfaz(tamanioPantalla)
         self.cargarNivel()
         self.contadorGenerarEnemigos = 0
-
+        self.sonidoPausa = pygame.mixer.Sound("./Recursos/Sonidos/Pausa.ogg")
+        self.sonidoAgarraPoder = pygame.mixer.Sound("./Recursos/Sonidos/AgarrarPoder.ogg")
+        self.sonidoPausa.set_volume(0.5)
+        self.sonidoPausa.set_volume(0.5)
+        
     def update(self, controlador):
         """Método para actualizar los grupos de sprites"""
         controlador.estadoJuego = self.consultarEstadoJuego()
@@ -73,6 +77,7 @@ class LaberintoBattleCity(ME_Laberinto):
         colisionJugadorConPoder = pygame.sprite.spritecollide(self.tanqueJugador, self.grupoPoderes, True, pygame.sprite.collide_rect)
         
         if(colisionJugadorConPoder):
+            self.sonidoAgarraPoder.play()
             for poder in colisionJugadorConPoder:
                 if( isinstance(poder, PoderCongelarEnemigos)):
                     poder.activarPoder(self.grupoEnemigos)
@@ -156,12 +161,16 @@ class LaberintoBattleCity(ME_Laberinto):
         
         super().cargarNivel(archivo)
 
+
     def evento(self, controlador, evento):
         """"""
         if(evento.type == pygame.KEYDOWN):
 
             if(evento.key == pygame.K_ESCAPE):
                 controlador.menuAbierto = True
+                self.sonidoPausa.play()
+                self.tanqueJugador.velocidadActualX = 0
+                self.tanqueJugador.velocidadActualY = 0
             elif(evento.key == pygame.K_SPACE):
                 self.tanqueJugador.disparar(self.grupoArmas)
             elif(evento.key == pygame.K_UP):
@@ -234,17 +243,12 @@ class LaberintoBattleCity(ME_Laberinto):
     def generarEnemigos(self):
         """Método para generar tanques enemigos aleatoriamente"""
 
-        if(self.contarEnemigos() < MAX_ENEMIGOS):
+        if(len(self.grupoEnemigos) < MAX_ENEMIGOS):
             self.contadorGenerarEnemigos += 1
             if self.contadorGenerarEnemigos > 75:
                 self.contadorGenerarEnemigos = 0
 
                 self.grupoEnemigos.add(self.agregarTanqueEnemigo())
-
-    def contarEnemigos(self):
-        """Método para contar los tanques enemigos"""
-
-        return len(self.grupoEnemigos)
 
     def consultarEstadoJuego(self):
         """Método para consultar el estado actual del juego"""

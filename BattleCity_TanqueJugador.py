@@ -29,26 +29,21 @@ class TanqueJugador(ME_Avatar_Controlable):
         self.cargarSprites(self.tipoTanqueActual)
         self.cargarSpritesMuerte()
         self.image = self.animacionArriba[0]
-        
-    """
-        #Sonidos
-        self.sonidoAgarraPoder = pygame.mixer.Sound(Constantes.S_AG_PODER)
-        self.sonidoNuevoTipo = pygame.mixer.Sound(Constantes.S_TIPO)
-        self.sonidoDisparar = pygame.mixer.Sound(Constantes.S_DISPARAR)
-        self.sonidoMoverse = pygame.mixer.Sound(Constantes.S_MOVER)
-        self.sonidoQuieto = pygame.mixer.Sound(Constantes.S_QUIETO)
-        self.sonidoMorir = pygame.mixer.Sound(Constantes.S_MORIR)
 
-        self.sonidoAgarraPoder.set_volume(Constantes.VOLUMEN)
-        self.sonidoNuevoTipo.set_volume(Constantes.VOLUMEN)
-        self.sonidoDisparar.set_volume(Constantes.VOLUMEN)
-        self.sonidoMoverse.set_volume(Constantes.VOLUMEN/4)
-        self.sonidoQuieto.set_volume(Constantes.VOLUMEN/4)
-        self.sonidoMorir.set_volume(Constantes.VOLUMEN)
-    """
+        #Sonidos
+        #self.sonidoMoverse = pygame.mixer.Sound("./Recursos/Sonidos/MotorMoviendo.ogg")
+        #self.sonidoQuieto = pygame.mixer.Sound("./Recursos/Sonidos/Motor.ogg")
+
+        #self.sonidoMoverse.set_volume(0.5)
+        #self.sonidoQuieto.set_volume(0.5)
+
 
     def update(self, grupoBloques, grupoJugador, grupoEnemigos):
         super().update()
+        #if self.velocidadActualX == 0 and self.velocidadActualY == 0:
+        #    self.sonidoQuieto.play()
+        #else:
+        #    self.sonidoMoverse.play()
         self.calcularColisiones(grupoBloques, grupoJugador, grupoEnemigos)
         if self.contadorAnimacionMuerte >= len(self.animacionMuerto):
             self.contadorAnimacionMuerte = 0

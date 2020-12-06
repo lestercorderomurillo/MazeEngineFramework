@@ -8,7 +8,7 @@ class PoderGranada(PoderAbstracto):
 
         super().__init__(x, y, tamanio) 
         self.image = self.crearAnimacion(32*9, 32*2, 32, 32)
-
+        
     def activarPoder(self, jugador, grupoEnemigos):
         for tanque in grupoEnemigos:
             tanque.esVariocolor = False

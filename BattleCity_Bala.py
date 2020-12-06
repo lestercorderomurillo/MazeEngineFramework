@@ -47,15 +47,17 @@ class Bala(ArmaMarda):
         self.rect = pygame.Rect(x, y, tamanio/4, tamanio/4)
 
             
-        """
-        self.sonidoMorir = pygame.mixer.Sound(Constantes.S_DESTRUIR_E)
-        self.sonidoArmadura = pygame.mixer.Sound(Constantes.S_ARMADURA)
-        self.sonidoDestruirBloque = pygame.mixer.Sound(Constantes.S_DESTRUIR_B)
+        
+        self.sonidoMorir = pygame.mixer.Sound("./Recursos/Sonidos/DestruirEnemigo.ogg")
+        self.sonidoArmadura = pygame.mixer.Sound("./Recursos/Sonidos/Armadura.ogg")
+        self.sonidoDestruirBloque = pygame.mixer.Sound("./Recursos/Sonidos/DestruirPared.ogg")
 
-        self.sonidoArmadura.set_volume(Constantes.VOLUMEN)
-        self.sonidoMorir.set_volume(Constantes.VOLUMEN)
-        self.sonidoDestruirBloque.set_volume(Constantes.VOLUMEN)
-        """
+        self.sonidoArmadura.set_volume(0.5)
+        self.sonidoMorir.set_volume(0.5)
+        self.sonidoDestruirBloque.set_volume(0.5)
+
+        pygame.mixer.Sound("./Recursos/Sonidos/Disparo.ogg").play()
+        
 
 
     def update(self, grupoBloques, grupoJugador, grupoEnemigos, grupoBalas, grupoMedallas):
@@ -120,7 +122,7 @@ class Bala(ArmaMarda):
                     entidad.vidas -= self.ataque
 
                     if entidad.vidas <= 0:
-                        #self.sonidoDestruirBloque.play()
+                        self.sonidoDestruirBloque.play()
                         entidad.destruido = True
                         entidad.kill()
 
@@ -129,7 +131,7 @@ class Bala(ArmaMarda):
 
             for entidad in listaColision:
                 if entidad.bando == Bando.Aliado and entidad.bando != self.bando:
-                    #self.sonidoMorir.play()
+                    self.sonidoMorir.play()
                     entidad.image = entidad.crearAnimacion(32*12, 32*0, 32, 32)
                     entidad.destruida = True
 
@@ -141,7 +143,7 @@ class Bala(ArmaMarda):
             if( self.bando != entidad.bando and entidad.vivo and not self.destruida):
                 self.destruida = True
                 if entidad.armadura <= 0:
-                    #entidad.sonidoMorir.play()
+                    self.sonidoMorir.play()
                     entidad.vivo = False
                     if(entidad.bando == Bando.Aliado):
                         entidad.vidas  -= self.ataque
@@ -155,7 +157,7 @@ class Bala(ArmaMarda):
                         elif entidad.tipoTanqueActual == 4:
                             puntos += 400
                 else:
-                    #self.sonidoArmadura.play()
+                    self.sonidoArmadura.play()
                     self.image = self.animacionExplosion[0]
                     entidad.armadura -= self.ataque
         for jugador in grupoJugador:
@@ -166,7 +168,7 @@ class Bala(ArmaMarda):
 
         for entidad in listaColision:
             if entidad.bando != self.bando:
-                #self.sonidoArmadura.play()
+                self.sonidoArmadura.play()
                 self.image = self.animacionExplosion[0]
                 self.destruida = True
                 entidad.destruida = True

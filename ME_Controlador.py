@@ -17,6 +17,10 @@ class ME_Controlador():
         self.menu = None
         self.laberinto = None
 
+        self.sonidoPerder = None
+        self.sonidoGanar = None
+        self.sonidoEmpezarJuego = None
+            
     def iniciarPyGame(self):
         os.environ['SDL_VIDEO_WINDOW_POS'] = 'center'
         pygame.mixer.init(44100, -16, 1, 512)
@@ -32,6 +36,7 @@ class ME_Controlador():
         self.ejecutandoJuego  = True
 
     def ejecutar(self):
+        self.sonidoEmpezarJuego.play()
         while(self.ejecutandoJuego):
             self.clock.tick(30)
             if(    (self.ejecutandoInicio)                   
@@ -50,9 +55,11 @@ class ME_Controlador():
                         self.laberinto.evento(self, evento)
 
             if self.estadoJuego == EstadoJuego.Ganar:
+                self.sonidoGanar.play()
                 self.menu.estadoActual = 6
                 self.menuAbierto      = True
             elif self.estadoJuego == EstadoJuego.Perder:
+                self.sonidoPerder.play()
                 self.menu.estadoActual = 7
                 self.menuAbierto      = True
 

@@ -54,6 +54,12 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
             self.velocidadMaxima = 3
             self.armadura = 4
 
+
+        self.sonidoAparecePoder = pygame.mixer.Sound("./Recursos/Sonidos/AparecePoder.ogg")
+        self.sonidoAparecePoder.set_volume(0.5)
+        self.DestruirEnemigo = pygame.mixer.Sound("./Recursos/Sonidos/DestruirEnemigo.ogg")
+        self.DestruirEnemigo.set_volume(0.5)
+
     def update(self, grupoBalas, grupoPoderes, grupoBloques, grupoJugador, grupoEnemigos):
         """Método para actualizar el estado de la entidad tanque"""
         probDisparo = random.randint(0, 100)
@@ -62,6 +68,7 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
         self.calcularColisiones(grupoBloques, grupoJugador, grupoEnemigos)
         if self.contadorAnimacionMuerte >= len(self.animacionMuerto):
             self.kill()
+            self.DestruirEnemigo.play()
             self.generarPoder(grupoPoderes)
         
         self.moverAutomatico()
@@ -113,32 +120,32 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
             if rand_poder == 1 :
                 poder = PoderVidaExtra(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
             elif rand_poder == 2 :
                 poder = PoderGranada(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
             elif rand_poder == 3 :
                 poder = PoderEscudo(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
             elif rand_poder == 4 :
                 poder = PoderMejorarTanque(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
             elif rand_poder == 5 :
                 poder = PoderCongelarEnemigos(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
             elif rand_poder == 6 :
                 poder = PoderReforzarBase(x*self.tamanio,y*self.tamanio, self.tamanio)
                 grupoPoderes.add(poder)
-                #self.sonidoAparecePoder.play()
+                self.sonidoAparecePoder.play()
 
     def calcularColisiones(self, grupoBloques, grupoJugador, grupoEnemigos):
         """"""
