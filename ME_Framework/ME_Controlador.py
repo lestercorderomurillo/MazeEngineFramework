@@ -15,8 +15,7 @@ class ME_Controlador():
         self.clock = pygame.time.Clock()
 
     def iniciarVentana(self, nombre, anchura, altura):
-        self.tamanio = [anchura, altura]
-        self.pantalla = pygame.display.set_mode(self.tamanio)
+        self.pantalla = pygame.display.set_mode(self.tamanioPantalla)
         pygame.display.set_caption(nombre)
 
         self.menuAbierto      = True 
@@ -34,6 +33,8 @@ class ME_Controlador():
                 self.laberinto.update(self)
                 for evento in pygame.event.get():
                     self.laberinto.evento(self, evento)
+        #logica de ganar o perder
+        #self.menu.estadoActual = 
             self.draw()
     
     def draw(self):

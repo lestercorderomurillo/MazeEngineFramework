@@ -20,14 +20,14 @@ class TipoTanque(enum.IntEnum):
 
 class TanqueEnemigo(ME_Avatar_Autonomo):
     """Clase hija de la entidad tanque"""
-    def __init__(self, x, y, tamanio, esVaricolor, tipoTanque):  
+    def __init__(self, x, y, tamanio, esVariocolor, tipoTanque):  
         """Constructor"""
 
         super().__init__(x, y, tamanio) 
 
         #Atributos del tanque enemigo
         self.tipoTanqueActual = tipoTanque
-        self.image = self.animacionArriba[0]
+        
         self.esVariocolor = esVariocolor
         self.tamanio = tamanio
 
@@ -52,13 +52,17 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
 
     def update(self, grupoBalas, grupoPoderes):
         """Método para actualizar el estado de la entidad tanque"""
+        probDisparo = random.randint(0, 100)
+
         super().update()
-        if self.contadorAnimarMuerte >= len(animacionMuerto):
+        if self.contadorAnimacionMuerte >= len(self.animacionMuerto):
             self.kill()
             self.generarPoder(grupoPoderes)
         
         self.moverAutomatico()
-        self.disparar(grupoBalas)
+
+        if(probDisparo < 2):
+            self.disparar(grupoBalas)
 
     def cargarSprites(self, tipoTanque):
         """Método para animar el tanque enemigo según su tipo"""

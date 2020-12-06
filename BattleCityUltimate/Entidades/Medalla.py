@@ -1,12 +1,13 @@
 from ME_Framework.Entidad.ME_Entidad import ME_Entidad
+import pygame
 
 class Medalla(ME_Entidad):
     """Clase para la entidad medalla"""
 
-    def __init__(self, x, y, bando):
+    def __init__(self, x, y, tamanio, bando):
         """Constructor"""
 
-        super().__init__(x, y)
+        super().__init__(x, y, tamanio)
 
         self.rescadasRestantes = 3
 
@@ -27,12 +28,12 @@ class Medalla(ME_Entidad):
         #self.sonidoEntregarMedalla = pygame.mixer.Sound(Constantes.S_BANDERA)
         #self.sonidoEntregarMedalla.set_volume(Constantes.VOLUMEN)
 
-    def update(self, jugador):
+    def update(self, jugador, deposito):
         """Método para actualizar el estado de la entidad medalla"""
 
         if(self.bando == 1):
             if (self.tomada):
-                if nivel.tanqueJugador.muerto == True:
+                if jugador.vivo == False:
                     self.rect.x = self.xInicial
                     self.rect.y = self.yInicial
                     self.tomada = False
@@ -53,12 +54,12 @@ class Medalla(ME_Entidad):
                         self.rect.x = jugador.rect.x - 3
                         self.rect.y = jugador.rect.y - 16 
                         self.image = pygame.transform.flip(self.imageSrc, True, False)
-                    if (self.rect.colliderect(nivel.depositoMedalla)):
+                    if (self.rect.colliderect(deposito)):
                         self.tomada = False
                         self.rescadasRestantes -= 1
                         #self.sonidoEntregarMedalla.play()
             else:
-                self.rect.x = self.x_inicial
-                self.rect.y = self.y_inicial
+                self.rect.x = self.xInicial
+                self.rect.y = self.yInicial
                 if (self.rect.colliderect(jugador)):
                     self.tomada = True

@@ -4,7 +4,7 @@ import pygame
 
 class MenuBattleCity(ME_Menu):
 
-    def __init__(self, tamanio):
+    def __init__(self, tamanioPantalla):
         """Constructor"""
 
         super().__init__()
@@ -12,21 +12,21 @@ class MenuBattleCity(ME_Menu):
 
         visualStudio = True
         if(visualStudio):
-            self.menu1_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu1.png").convert(), (tamanio[0], tamanio[1]))
-            self.menu2_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu2.png").convert(), (tamanio[0], tamanio[1]))
-            self.menu3_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu3.png").convert(), (tamanio[0], tamanio[1]))
-            self.reglas_png =       pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Reglas.png").convert(), (tamanio[0], tamanio[1]))
-            self.controles_png =    pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Controles.png").convert(), (tamanio[0], tamanio[1]))
-            self.victoria_png =     pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Victory.png").convert(), (tamanio[0], tamanio[1]))
-            self.derrota_png =      pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/GameOver.png").convert(), (tamanio[0], tamanio[1]))
+            self.menu1_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu1.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.menu2_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu2.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.menu3_png =        pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Menu3.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.reglas_png =       pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Reglas.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.controles_png =    pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Controles.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.victoria_png =     pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/Victory.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.derrota_png =      pygame.transform.scale(pygame.image.load("./BattleCityUltimate/Recursos/Imagenes/Menu/GameOver.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
         else:
-            self.menu1_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu1.png").convert(), (tamanio[0], tamanio[1]))
-            self.menu2_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu2.png").convert(), (tamanio[0], tamanio[1]))
-            self.menu3_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu3.png").convert(), (tamanio[0], tamanio[1]))
-            self.reglas_png =       pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Reglas.png").convert(), (tamanio[0], tamanio[1]))
-            self.controles_png =    pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Controles.png").convert(), (tamanio[0], tamanio[1]))
-            self.victoria_png =     pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Victory.png").convert(), (tamanio[0], tamanio[1]))
-            self.derrota_png =      pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/GameOver.png").convert(), (tamanio[0], tamanio[1]))
+            self.menu1_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu1.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.menu2_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu2.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.menu3_png =        pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Menu3.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.reglas_png =       pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Reglas.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.controles_png =    pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Controles.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.victoria_png =     pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/Victory.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
+            self.derrota_png =      pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/GameOver.png").convert(), (tamanioPantalla[0], tamanioPantalla[1]))
         
     def evento(self, controlador, evento):
         """"""

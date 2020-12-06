@@ -10,7 +10,7 @@ class Bala(ArmaMarda):
 
         super().__init__(x, y, direccion, tamanio)
 
-        escala = (math.floor(Constantes.TAMANIO/4), math.floor(Constantes.TAMANIO/4))
+        escala = (math.floor(tamanio/4), math.floor(tamanio/4))
 
         self.bando = bando
         self.ataque = 1
@@ -25,16 +25,16 @@ class Bala(ArmaMarda):
 
         self.rect = pygame.Rect(x, y, tamanio/4, tamanio/4)
 
-        if (direccion == Direccion.Arriba):
+        if (direccion == 1):
             x += tamanio/2.6666
             y += tamanio/4
-        elif (direccion == Direccion.Abajo):
+        elif (direccion == 3):
             x += tamanio/2.6666
             y += tamanio/1.92
-        elif (direccion == Direccion.Derecha):
+        elif (direccion == 2):
             x += tamanio/1.92
             y += tamanio/2.6666
-        elif (direccion == Direccion.Izquierda):
+        elif (direccion == 4):
             x += tamanio/4
             y += tamanio/2.6666
             
@@ -49,26 +49,27 @@ class Bala(ArmaMarda):
         """
 
 
-    def update(self, grupoJugador, grupoEnemigos, grupoBloques, grupoBalas, grupoMedallas):
+    def update(self):
         """Método para actualizar el estado de la entidad proyectil"""
-        super().update()
-        
-        if(self.direccion == Direccion.Abajo):
+
+        super().update()        
+
+        if(self.direccion == 3):
             self.image = self.animacionAbajo[self.imagenAnimacion]
             self.velocidadActualY = 20
 
-        if(self.direccion == Direccion.Derecha):
+        elif(self.direccion == 2):
             self.image = self.animacionDerecha[self.imagenAnimacion]
             self.velocidadActualX = 20
 
-        if(self.direccion == Direccion.Arriba):
+        elif(self.direccion == 1):
             self.image = self.animacionArriba[self.imagenAnimacion]
             self.velocidadActualY = -20
 
-        if(self.direccion == Direccion.Izquierda):
+        elif(self.direccion == 4):
             self.image = self.animacionIzquierda[self.imagenAnimacion]
             self.velocidadActualX = -20
-
+            
         self.rect.x += self.velocidadActualX
         self.rect.y += self.velocidadActualY
 

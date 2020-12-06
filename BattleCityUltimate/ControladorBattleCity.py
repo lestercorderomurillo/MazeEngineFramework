@@ -10,18 +10,22 @@ class ControladorBattleCity(ME_Controlador):
     def __init__(self):
         """Constructor"""
 
-        self.tamanio = [840, 720]
-        super().__init__("Battle City Game", self.tamanio[0], self.tamanio[1])
+        self.tamanioPantalla = [840, 720]
+        self.tamanio = 40
+        super().__init__("Battle City Game", self.tamanioPantalla[0], self.tamanioPantalla[1])
 
         self.iniciar()
 
     def iniciar(self):
-        self.laberinto = LaberintoBattleCity(self.tamanio)
-        self.menu = MenuBattleCity(self.tamanio)
+        self.laberinto = LaberintoBattleCity(self.tamanio, self.tamanioPantalla)
+        self.menu = MenuBattleCity(self.tamanioPantalla)
+
+    def ejecutar(self):
+        super().ejecutar()
+
 
 def main():
     battleCity = ControladorBattleCity()
-    battleCity.iniciar()
     battleCity.ejecutar()
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+from ME_Framework.Entidad.ME_Entidad import ME_Entidad
 import pygame, math
 
 class ArmaMarda(ME_Entidad):

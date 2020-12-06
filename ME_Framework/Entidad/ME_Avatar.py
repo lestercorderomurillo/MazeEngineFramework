@@ -1,7 +1,7 @@
 from ME_Framework.Entidad.ME_Entidad import ME_Entidad
-import enum, pygame
+import enum, pygame, math
 
-class Direccion(enum.Enum):
+class Direccion(enum.IntEnum):
     """Enumeración de las direcciones posibles para los avatares"""
     Arriba    = 1
     Derecha   = 2
@@ -43,7 +43,7 @@ class ME_Avatar(ME_Entidad):
             self.moviendose = True
         else:
             self.moviendose = False
-        animarAvatar()
+        self.animarAvatar()
         self.rect.x += self.velocidadActualX * self.velocidadMaxima
         self.rect.y += self.velocidadActualY * self.velocidadMaxima
 
@@ -53,7 +53,7 @@ class ME_Avatar(ME_Entidad):
 
         if self.vivo:
             if (self.moviendose):
-                imagenAnimacion = math.floor(self.contadorAnimarMovimiento)
+                imagenAnimacion = math.floor(self.contadorAnimacionMovimiento)
             else:
                 imagenAnimacion = 0
 
@@ -69,17 +69,17 @@ class ME_Avatar(ME_Entidad):
             elif(self.direccion == Direccion.Izquierda ):
                 self.image = self.animacionIzquierda[imagenAnimacion]
 
-            self.contadorAnimarMovimiento += 0.5
+            self.contadorAnimacionMovimiento += 0.5
 
             #Todos los vectores de animación tienen 4 sprites
-            if self.contadorAnimarMovimiento >= 4:
-                self.contadorAnimarMovimiento = 0
+            if self.contadorAnimacionMovimiento >= 4:
+                self.contadorAnimacionMovimiento = 0
 
         else:
-            if self.contadorAnimarMuerte < len(animacionMuerto):
-                imagenAnimacion = math.floor(self.contadorAnimarMuerte)
+            if self.contadorAnimacionMuerte < len(animacionMuerto):
+                imagenAnimacion = math.floor(self.contadorAnimacionMuerte)
                 self.image = self.animacionMuerto[imagenAnimacion]
-                self.contadorAnimarMuerte += 0.1
+                self.contadorAnimacionMuerte += 0.1
 
 
 

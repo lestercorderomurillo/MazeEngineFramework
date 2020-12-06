@@ -47,7 +47,7 @@ class TanqueJugador(ME_Avatar_Controlable):
 
     def update(self):
         super().update()
-        if self.contadorAnimarMuerte >= len(animacionMuerto):
+        if self.contadorAnimacionMuerte >= len(self.animacionMuerto):
             self.contadorAnimacionMuerte = 0
             if self.vidas > 0:
                 self.reaparecer()
@@ -93,9 +93,6 @@ class TanqueJugador(ME_Avatar_Controlable):
         self.tipoTanqueActual = TipoTanque.Inicial
         self.cargarSprites(TipoTanque.Inicial)
 
-    def disparar(self,grupoBalas):
+    def disparar(self, grupoArmas):
         """Método para disparar"""
-        grupoBalas.add( Bala(self.rect.x,self.rect.y,self.direccion,self.tamanio,0) )
-
-
-            
+        grupoArmas.add( Bala(self.rect.x,self.rect.y,self.direccion,self.tamanio,0) )

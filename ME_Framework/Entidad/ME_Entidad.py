@@ -3,10 +3,12 @@ import enum, pygame
 class ME_Entidad(pygame.sprite.Sprite):
     """Clase genérica para las entidades del juego"""
 
-    def __init__(self, x, y, tamanio):
+    def __init__(self, x, y, taman):
         """Constructor"""
-        self.cargarSprite("archivo.png")
-        self.tamanio = tamanio
+       # self.cargarSprite("./Recursos/Imagenes/Sprites/Sprites.png")
+        super().__init__()
+        self.cargarSprite("./BattleCityUltimate/Recursos/Imagenes/Sprites/Sprites.png")
+        self.tamanio = taman
         self.rect = pygame.Rect(x, y, self.tamanio, self.tamanio)
         self.rect.x = x
         self.rect.y = y

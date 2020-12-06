@@ -27,16 +27,16 @@ class ME_Avatar_Autonomo(ME_Avatar):
                         self.velocidadActualY = 0
                     elif(randDireccion == 1):
                         self.direccion = Direccion.Derecha
-                        elf.velocidadActualX = 1
+                        self.velocidadActualX = 1
                         self.velocidadActualY = 0
                     elif(randDireccion == 2):
                         self.direccion = Direccion.Arriba
                         self.velocidadActualY = -1
-                        elf.velocidadActualX = 0
+                        self.velocidadActualX = 0
                     elif(randDireccion == 3):
                         self.direccion = Direccion.Abajo    
                         self.velocidadActualY = 1
-                        elf.velocidadActualX = 0
+                        self.velocidadActualX = 0
                 elif(randMuevase == 0):
                     self.velocidadActualX = 0
                     self.velocidadActualY = 0
