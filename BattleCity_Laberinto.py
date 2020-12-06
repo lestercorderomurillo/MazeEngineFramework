@@ -21,7 +21,7 @@ from BattleCity_PoderMejorarTanque import PoderMejorarTanque
 from BattleCity_PoderCongelarEnemigos import PoderCongelarEnemigos
 from BattleCity_PoderReforzarBase import PoderReforzarBase
 
-import pygame, random
+import pygame, random, enum
 
 MAPA1 = "./Recursos/Mapas/mapa1.data"
 MAPA2 = "./Recursos/Mapas/mapa2.data"
@@ -35,11 +35,18 @@ BANDOJUGADOR = 0
 BANDOENEMIGO = 1
 MAX_ENEMIGOS = 12
 
+class EstadoJuego(enum.IntEnum):
+    """Enumeración de las posibles estado del juego"""
+    Jugar   = 1
+    Ganar   = 2
+    Perder  = 3
+
 class LaberintoBattleCity(ME_Laberinto):
 
     def __init__(self, taman, tamanioPantalla):
         """Constructor"""
         super().__init__(taman)
+        self.tamanioPantalla = tamanioPantalla
         self.grupoPoderes = pygame.sprite.Group()
         self.grupoMedallas = pygame.sprite.Group()
         self.grupoEntidadesSinColision = pygame.sprite.Group()
@@ -49,7 +56,8 @@ class LaberintoBattleCity(ME_Laberinto):
 
     def update(self, controlador):
         """Método para actualizar los grupos de sprites"""
-
+        controlador.estadoJuego = self.consultarEstadoJuego()
+        
         self.grupoJugador.update(self.grupoBloques, self.grupoJugador, self.grupoEnemigos)
         self.grupoEnemigos.update(self.grupoArmas, self.grupoPoderes, self.grupoBloques, self.grupoJugador, self.grupoEnemigos)
         self.grupoArmas.update(self.grupoBloques, self.grupoJugador, self.grupoEnemigos, self.grupoArmas, self.grupoMedallas)
@@ -241,13 +249,17 @@ class LaberintoBattleCity(ME_Laberinto):
     def consultarEstadoJuego(self):
         """Método para consultar el estado actual del juego"""
         
-        #estado = EstadoJuego.Jugar
+        estado = EstadoJuego.Jugar
 
-        #if self.tanqueJugador.sinVidas:
-        #    estado = EstadoJuego.Perder
-        #elif self.medallaAliada.destruida == True:
-        #    estado = EstadoJuego.Perder
-        #elif self.medallaEnemiga.rescadasRestantes == 0:
-        #    estado = EstadoJuego.Ganar
-        estado = 0
+        if self.tanqueJugador.vidas == 0:
+            estado = EstadoJuego.Perder
+        elif self.medallaAliada.destruida == True:
+            estado = EstadoJuego.Perder
+        elif self.medallaEnemiga.rescadasRestantes <= 0:
+            estado = EstadoJuego.Ganar
         return estado
+
+    def resetear(self):
+        """Método para reiniciar el laberinto"""
+
+        self.__init__(self.tamanio ,self.tamanioPantalla)

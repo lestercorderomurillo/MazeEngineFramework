@@ -1,4 +1,10 @@
-import pygame, os
+import pygame, os, enum
+
+class EstadoJuego(enum.IntEnum):
+    """Enumeración de las posibles estado del juego"""
+    Jugar   = 1
+    Ganar   = 2
+    Perder  = 3
 
 class ME_Controlador():
     """Controlador del Framework"""
@@ -7,6 +13,9 @@ class ME_Controlador():
         """Constructor"""
         self.iniciarPyGame()
         self.iniciarVentana(nombre, anchura, altura)
+        self.estadoJuego = EstadoJuego.Jugar
+        self.menu = None
+        self.laberinto = None
 
     def iniciarPyGame(self):
         os.environ['SDL_VIDEO_WINDOW_POS'] = 'center'
@@ -28,22 +37,39 @@ class ME_Controlador():
             if(    (self.ejecutandoInicio)                   
                 or (self.ejecutandoInicio == False and self.menuAbierto)):
                 for evento in pygame.event.get():
-                    self.menu.evento(self, evento)
+                    if evento.type == pygame.QUIT:
+                        self.ejecutandoJuego     = False
+                    else:
+                        self.menu.evento(self, evento)
             elif(not self.menuAbierto):
                 self.laberinto.update(self)
                 for evento in pygame.event.get():
-                    self.laberinto.evento(self, evento)
-        #logica de ganar o perder (menu.estadoActual = Victoria/Derrota)
-        # pygame.time.delay(1000)
-        #acomodar balas que se disparen desde el centro de los tanques
-        #sonidos
-        #ciertos tanques enemigos se mueven con direcciones raras
-        #comentar todo lo que se pueda
-        #generar documentación
-        #generar modelo de clases
-        #justificacion de disenio (pdf) Plantilla, Decorador, MVC, Constructor
+                    if evento.type == pygame.QUIT:
+                        self.ejecutandoJuego     = False
+                    else:
+                        self.laberinto.evento(self, evento)
+
+            if self.estadoJuego == EstadoJuego.Ganar:
+                self.menu.estadoActual = 6
+                self.menuAbierto      = True
+            elif self.estadoJuego == EstadoJuego.Perder:
+                self.menu.estadoActual = 7
+                self.menuAbierto      = True
+
+            if self.estadoJuego != EstadoJuego.Jugar:
+                pygame.time.delay(1000)
+
             self.draw()
-    
+            
+            if self.estadoJuego != EstadoJuego.Jugar:
+                pygame.time.delay(2000)
+                self.estadoJuego = EstadoJuego.Jugar
+                self.menuAbierto      = True
+                self.ejecutandoInicio = True
+                self.menu.estadoActual = 1
+                self.laberinto.resetear()
+        pygame.quit()
+                
     def draw(self):
         self.laberinto.draw(self, self.pantalla)
         self.menu.draw(self, self.pantalla)

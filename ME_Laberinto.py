@@ -42,8 +42,4 @@ class ME_Laberinto():
         self.grupoBloques.draw(pantalla)
         self.grupoArmas.draw(pantalla)
 
-    def reset(self):
-        """Método para reiniciar el nivel"""
-
-        self.__init__()
     

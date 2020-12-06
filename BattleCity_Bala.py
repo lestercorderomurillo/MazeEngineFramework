@@ -16,6 +16,19 @@ class Bala(ArmaMarda):
     def __init__(self,x, y, direccion, tamanio, bando):
         """Constructor"""
 
+        if (direccion == Direccion.Arriba):
+            x += tamanio/2.6666
+            y += tamanio/4
+        elif (direccion == Direccion.Abajo):
+            x += tamanio/2.6666
+            y += tamanio/1.92
+        elif (direccion == Direccion.Derecha):
+            x += tamanio/1.92
+            y += tamanio/2.6666
+        elif (direccion == Direccion.Izquierda):
+            x += tamanio/4
+            y += tamanio/2.6666
+        
         super().__init__(x, y, direccion, tamanio)
 
         escala = (math.floor(tamanio/4), math.floor(tamanio/4))
@@ -33,18 +46,6 @@ class Bala(ArmaMarda):
 
         self.rect = pygame.Rect(x, y, tamanio/4, tamanio/4)
 
-        if (direccion == Direccion.Arriba):
-            x += tamanio/2.6666
-            y += tamanio/4
-        elif (direccion == Direccion.Abajo):
-            x += tamanio/2.6666
-            y += tamanio/1.92
-        elif (direccion == Direccion.Derecha):
-            x += tamanio/1.92
-            y += tamanio/2.6666
-        elif (direccion == Direccion.Izquierda):
-            x += tamanio/4
-            y += tamanio/2.6666
             
         """
         self.sonidoMorir = pygame.mixer.Sound(Constantes.S_DESTRUIR_E)
