@@ -1,8 +1,14 @@
+## @package Interfaz
+#Clase para la interfaz del juego
 import pygame, math
 
-class Interfaz():
-    """Clase para la interfaz del juego"""
 
+class Interfaz():
+    """"""
+## Método constructor para Interfaz
+#\details El método guarda el tamanioPantalla y carga los archivos HUD y los adapta al tamaño.
+#\param taman
+#\return No retorna 
     def __init__(self, taman):
         """Constructor"""
 
@@ -13,6 +19,10 @@ class Interfaz():
         self.hud2_png = pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/HUD2.png").convert_alpha(), (self.tamanioPantalla[0], self.tamanioPantalla[1]))
         self.hud3_png = pygame.transform.scale(pygame.image.load("./Recursos/Imagenes/Menu/HUD3.png").convert_alpha(), (self.tamanioPantalla[0], self.tamanioPantalla[1]))
 
+## Metodo que se usa para recuperar informacion de distintas clases
+#\details -
+#\param Un laberinto que contenga las clases
+#\return Sin retorno
     def recuperarInformacion(self, laberinto):
         """Método para obtener información del estado actual juego"""
 
@@ -47,6 +57,7 @@ class Interfaz():
         self.contador += 0.05
         if(self.contador > 20):
             self.contador = 0
+
 
     def draw(self, pantalla, laberinto):
         """Método para dibujar la interfaz del juego"""

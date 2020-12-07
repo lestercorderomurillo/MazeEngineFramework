@@ -1,3 +1,5 @@
+## @package Medalla
+#Clase Medalla, para representar el objeto que es protegido en la base aliada como en la enemiga
 from ME_Entidad import ME_Entidad
 from ME_Entidad import Direccion
 
@@ -7,6 +9,12 @@ import pygame
 class Medalla(ME_Entidad):
     """Clase para la entidad medalla"""
 
+## Constructor de medalla. 
+#\details El constructor define atributos que van a ser necesarios para determinar si el jugador gana o pierde en la partida, así como la ubicación inicial de la medalla y el bando.
+#Dependiendo del bando, la medalla tomará un sprite u otro para que se pueda distinguir a cual bando pertence. Por último, se define con pygame.mixer el sonido que hará la medalla enemiga
+# al ser entregada en la base aliada
+#\param x,y: coordenadas que determinarán posición de la medalla en pantalla, y bando, que define a qué bando pertenece la medalla
+#\return sin retorno 
     def __init__(self, x, y, tamanio, bando):
         """Constructor"""
 
@@ -28,11 +36,14 @@ class Medalla(ME_Entidad):
 
         self.image = self.imageSrc
 
-        #self.sonidoEntregarMedalla = pygame.mixer.Sound(Constantes.S_BANDERA)
-        #self.sonidoEntregarMedalla.set_volume(Constantes.VOLUMEN)
-
+        self.sonidoEntregarMedalla = pygame.mixer.Sound("./Recursos/Sonidos/EntregarMedalla.ogg")
+        self.sonidoEntregarMedalla.set_volume(0.5)
+##Método para actualizar el estado de la entidad medalla
+#\details El método examina el estado de la medalla enemiga y actualiza su estado dependiendo de si está tomada o no, y en si el jugador está en movimiento portandola.
+#\param objetos jugador y deposito.
+#\return No retorna
     def update(self, jugador, deposito):
-        """Método para actualizar el estado de la entidad medalla"""
+        
 
         if(self.bando == 1):
             if (self.tomada):
@@ -60,7 +71,7 @@ class Medalla(ME_Entidad):
                     if (self.rect.colliderect(deposito)):
                         self.tomada = False
                         self.rescadasRestantes -= 1
-                        #self.sonidoEntregarMedalla.play()
+                        self.sonidoEntregarMedalla.play()
             else:
                 self.rect.x = self.xInicial
                 self.rect.y = self.yInicial
