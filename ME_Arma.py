@@ -4,6 +4,7 @@ import pygame, math
 
 class ArmaMarda(ME_Entidad):
     """Clase abstracta para cualquier arma"""
+
     
     def __init__(self, x, y, direccion, tamanio):
         """Constructor"""
@@ -18,6 +19,7 @@ class ArmaMarda(ME_Entidad):
         self.destruida = False
         self.ataque = 1
         self.direccion = direccion
+
 
     def update(self):
         if self.destruida:
