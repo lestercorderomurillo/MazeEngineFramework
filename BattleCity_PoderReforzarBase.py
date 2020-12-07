@@ -1,16 +1,26 @@
 from BattleCity_PoderAbstracto import PoderAbstracto
-from BattleCity_BloqueLadrillo import BloqueLadrillo 
-from BattleCity_BloqueMetalico import BloqueMetalico 
+from BattleCity_BloqueLadrillo import BloqueLadrillo
+from BattleCity_BloqueMetalico import BloqueMetalico
 
 class PoderReforzarBase(PoderAbstracto):
     """Clase para el poder de reforzar la base aliada"""
 
+    ## Constructor
+    # \details Constructor de la clase
+    # \param x , y: posiciones en la pantalla de juego, tamanio: del sprite
+    #\return  no retorna valor
     def __init__(self, x, y, tamanio):
         """Constructor"""
 
         super().__init__(x, y, tamanio)
         self.image = self.crearAnimacion(32*13, 32*2, 32, 32)
 
+    ## Mejora la base del jugador
+    # \details En caso de bloques sean ladrillos los mejora a bloques metálicos
+    # en caso de un bloque destruido crea uno nuevo en su lugar
+    # en caso de bloques dañados se reparan
+    # \param grupoBloques: grupo de bloques en el juego, tamanio : tamaño del sprite para bloques
+    #\return no retorna valor
     def activarPoder(self, grupoBloques, tamanio):
                 izq = True
                 esquinaIzq = True

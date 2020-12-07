@@ -1,3 +1,5 @@
+## @package Bala
+# Clase para bala, el proyectil arma que usa los tanques
 from ME_Arma import ArmaMarda
 from ME_Entidad import Direccion
 from ME_Entidad import Bando
@@ -13,6 +15,10 @@ import pygame, math
 class Bala(ArmaMarda):
     """Clase hija de la entidad proyectil"""
 
+## Constructor de la clase Bala
+#\details El constructor inicializa los valores de la bala, como dirección o velocidad de la misma. Asimismo, agregaa animaciones y sonidos para la misma
+#\param No recibe parametros
+#\return No retorna
     def __init__(self,x, y, direccion, tamanio, bando):
         """Constructor"""
 
@@ -57,6 +63,10 @@ class Bala(ArmaMarda):
         if(self.bando == Bando.Aliado):
             pygame.mixer.Sound("./Recursos/Sonidos/Disparo.ogg").play()
 
+## Metodo para que la bala actualice su estado
+#\details La bala se actualiza de acuerdo a la direccion que tome y la velocidad que tenga fijada
+#\param recibe grupos como parametros para poder pasarlos a al metodo calcularColisiones
+#\return No retorna
     def update(self, grupoBloques, grupoJugador, grupoEnemigos, grupoBalas, grupoMedallas):
         """Método para actualizar el estado de la entidad proyectil"""
 
@@ -83,6 +93,10 @@ class Bala(ArmaMarda):
 
         self.calcularColisiones(grupoBloques, grupoJugador, grupoEnemigos, grupoBalas, grupoMedallas)
 
+## Metodo para determinar si existen choques entre elementos de distintos grupos 
+#\details El metodo invoca a otros metodos que sirven especificamente para casos especificos
+#\param grupos de objetos
+#\return No retorna
     def calcularColisiones(self, grupoBloques, grupoJugador, grupoEnemigos, grupoBalas, grupoMedallas):
         """"""
         colisionBloques     = pygame.sprite.spritecollide(self, grupoBloques, False, pygame.sprite.collide_rect)
@@ -107,6 +121,10 @@ class Bala(ArmaMarda):
             if colisionBalas:
                 self.colisionarBalas(colisionBalas)
 
+## Metodo para activar reacciones en los bloques afectados por una colisión 
+#\details -
+#\param listaColision
+#\return No retorna
     def colisionarBloques(self, listaColision):
         """Método para detectar las colisiones de balas con bloques"""
 
@@ -123,6 +141,10 @@ class Bala(ArmaMarda):
                         entidad.destruido = True
                         entidad.kill()
 
+## Metodo para activar reacciones en medallas afectados por una colisión 
+#\details -
+#\param listaColision
+#\return No retorna
     def colisionarMedallas(self, listaColision):
             """Método para detectar las colisiones de balas con medallas"""
 
@@ -132,6 +154,10 @@ class Bala(ArmaMarda):
                     entidad.image = entidad.crearAnimacion(32*12, 32*0, 32, 32)
                     entidad.destruida = True
 
+## Metodo para activar reacciones en tanques afectados por una colisión 
+#\details -
+#\param listaColision, grupoJugador
+#\return No retorna
     def colisionarTanques(self, listaColision, grupoJugador):
         """Método para detectar las colisiones de balas con tanques"""
 
@@ -160,6 +186,10 @@ class Bala(ArmaMarda):
         for jugador in grupoJugador:
             jugador.puntuacion += puntos
 
+## Metodo para activar reacciones en balas afectados por una colisión 
+#\details -
+#\param listaColision
+#\return No retorna
     def colisionarBalas(self, listaColision):
         """Método para detectar las colisiones de balas con balas"""
 

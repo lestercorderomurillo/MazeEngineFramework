@@ -22,14 +22,20 @@ class TipoTanque(enum.IntEnum):
 
 class TanqueEnemigo(ME_Avatar_Autonomo):
     """Clase hija de la entidad tanque"""
-    def __init__(self, x, y, tamanio, esVariocolor, tipoTanque):  
+
+    ## Constructor
+    # \details Constructor de la clase
+    # \param x , y: posiciones en la pantalla de juego, tamanio: del sprite,
+    # esVarioColor: si tanque crea poder al morir, tipoTanque: tipo del tanque
+    #\return no retorna valor
+    def __init__(self, x, y, tamanio, esVariocolor, tipoTanque):
         """Constructor"""
 
-        super().__init__(x, y, tamanio) 
+        super().__init__(x, y, tamanio)
 
         #Atributos del tanque enemigo
         self.tipoTanqueActual = tipoTanque
-        
+
         self.esVariocolor = esVariocolor
         self.tamanio = tamanio
         self.bando = Bando.Enemigo
@@ -60,6 +66,12 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
         self.DestruirEnemigo = pygame.mixer.Sound("./Recursos/Sonidos/DestruirEnemigo.ogg")
         self.DestruirEnemigo.set_volume(0.5)
 
+
+    ## Actualiza del estado del tanque
+    # \details Actualiza del estado del tanque incluyendo sus actuales colisiones, , vida,, movimiento, y si esta disparando
+    # \param grupoBalas: grupo con balas en juego, grupoPoderes: grupo con poderes, grupoBloques: grupo con bloques en juejo
+    # grupoJugador : grupo con jugador, grupoEnemigos: grupo con enemigos en juego
+    #\return no retorna valor
     def update(self, grupoBalas, grupoPoderes, grupoBloques, grupoJugador, grupoEnemigos):
         """Método para actualizar el estado de la entidad tanque"""
         probDisparo = random.randint(0, 100)
@@ -70,12 +82,17 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
             self.kill()
             self.DestruirEnemigo.play()
             self.generarPoder(grupoPoderes)
-        
+
         self.moverAutomatico()
 
         if(probDisparo < 2 and self.activo):
             self.disparar(grupoBalas)
 
+    ## Carga sprites para el tanque enemigo
+    # \details  Carga sprites para el tanque enemigo según el tipoTanque  y el esVarioColor
+    # que define si genera poderes en el juego al ser destruido
+    # \param tipoTanque: tipo de tanque
+    #\return no retorna valor
     def cargarSprites(self, tipoTanque):
         """Método para animar el tanque enemigo según su tipo"""
 
@@ -99,16 +116,29 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
                 self.animacionAbajo.append(     self.animacionAbajo[x]    )
                 self.animacionIzquierda.append( self.animacionIzquierda[x])
 
-
+    ## Carga sprites para el tanque enemigo cuendo muere
+    # \details Carga sprites para el tanque enemigo cuendo muere
+    # \param no parametro requerido
+    #\return no retorna valor
     def cargarSpritesMuerte(self):
         """Método para animar la muerte de los tanques enemigos"""
         for x in range(3):
             self.animacionMuerto.append(self.crearAnimacion(32*(10+x), 0, 32, 32))
 
+    ## Dispara balas
+    # \details Carga sprites de balas disparadas por tanque
+    # \param grupoBalas: grupo con las balas en juego
+    #\return no retorna valor
     def disparar(self,grupoBalas):
         """Método para disparar"""
         grupoBalas.add( Bala(self.rect.x,self.rect.y,self.direccion,self.tamanio,1) )
 
+
+    ## Genera un poder al ser destruido por jugador
+    # \details Cuando es destruido un enemigo con true Variocolor, este genera aleatoriomente
+    # un poder en algún lugar del mapa
+    # \param grupoPoderes: grupo con los poderes
+    #\return no retorna valor
     def generarPoder(self, grupoPoderes):
         """Método para generar poderes aleatoriamente"""
 
@@ -147,6 +177,10 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
                 grupoPoderes.add(poder)
                 self.sonidoAparecePoder.play()
 
+    ## Busca todas las colisiones ocurridas con el tanque enemigo
+    # \details Revisa con que colisiono el tanque enemigo y almacena en grupos de colisiones respectivos
+    # \param grupoBloques: grupo con los bloques en juego, grupoJugador: grupo con el jugador , grupoEnemigos: grupo con  los otros enemigos
+    #\return no retorna valor
     def calcularColisiones(self, grupoBloques, grupoJugador, grupoEnemigos):
         """"""
         #Crea una lista con las entidades que colisionan los tanques
@@ -163,6 +197,10 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
         if colisionEnemigos:
             self.colisionarTanques(colisionEnemigos)
 
+    ## Verifica si la diferencia entre dos números es pequeña
+    # \details Verifica que la diferencia entre dos números sea pequeña
+    # \param a, b: valores a aplicar la diferencia
+    #\return retorna booleano
     def retornarDiferencia(self, a, b):
         """Método para verificar que la diferencia entre dos números sea pequeña"""
 
@@ -171,6 +209,10 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
         else:
             return (b - a) <= 10
 
+    ## Verifica la colision de enemigo con bloques
+    # \details  Verifica la colision de enemigo con bloques en el juego
+    # \param listaColision: lista con objetos que colisionaron
+    #\return no retorna valor
     def colisionarBloques(self, listaColision):
         """Método para detectar las colisiones de tanques con bloques"""
 
@@ -191,6 +233,10 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
                 self.rect.top = entidad.rect.bottom
                 self.velocidadActualY = 0
 
+    ## Verifica la colision de enemigo con tanques
+    # \details  Verifica la colision de tanque con otros tanques en el juego
+    # \param listaColision: lista con objetos que colisionaron
+    #\return no retorna valor
     def colisionarTanques(self, listaColision):
         """Método para detectar las colisiones de tanques con tanques"""
 
@@ -210,4 +256,4 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
 
                 elif(self.velocidadActualY < 0 and self.retornarDiferencia(self.rect.top, entidad.rect.bottom) and self.direccion == Direccion.Arriba and self != entidad):
                     self.rect.top = entidad.rect.bottom
-                    self.velocidadActualY = 0      
+                    self.velocidadActualY = 0

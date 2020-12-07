@@ -1,3 +1,5 @@
+## @package LaberintoBattleCity
+# Esta clase reúne a todos las demás clases tipo BattleCity para poder ejecutar el juego
 from ME_Controlador import ME_Controlador
 from ME_Laberinto import ME_Laberinto
 from ME_Entidad import Direccion
@@ -35,14 +37,23 @@ BANDOJUGADOR = 0
 BANDOENEMIGO = 1
 MAX_ENEMIGOS = 12
 
+
+##Enumeración de las posibles estado del juego
+#\details 
+#\param 
+#\return 
 class EstadoJuego(enum.IntEnum):
-    """Enumeración de las posibles estado del juego"""
     Jugar   = 1
     Ganar   = 2
     Perder  = 3
 
 class LaberintoBattleCity(ME_Laberinto):
 
+## Constructor del laberinto. Inicializa los atributos que el laberinto va a necesitar para ejecutar el juego.
+#\details Los atributos de grupo del laberinto son inicializados usando pygame.sprite.Group() y se inicializan los sonidos que ejecutará el laberinto.
+#Asimismo, se invoca al constructor interfaz y cargaNivel().  
+#\param taman y tamanio pantalla
+#\return No retorna
     def __init__(self, taman, tamanioPantalla):
         """Constructor"""
         super().__init__(taman)
@@ -57,8 +68,14 @@ class LaberintoBattleCity(ME_Laberinto):
         self.sonidoAgarraPoder = pygame.mixer.Sound("./Recursos/Sonidos/AgarrarPoder.ogg")
         self.sonidoPausa.set_volume(0.5)
         self.sonidoAgarraPoder.set_volume(0.5)
-        
+
+##Método que actualiza el estado de todos los elementos del juego
+#\details El método invoca al método update() de todos los grupos del juego, lo que propicia que el estado general del juego se actualice. Asimismo, invoca generarEnemigos() para
+#mantener una constante presencia de enemigos. 
+#\param controlador, objeto
+#\return no retorna         
     def update(self, controlador):
+
         """Método para actualizar los grupos de sprites"""
         controlador.estadoJuego = self.consultarEstadoJuego()
         
@@ -72,6 +89,11 @@ class LaberintoBattleCity(ME_Laberinto):
         super().update()
         self.generarEnemigos()
 
+
+## Métod usado para detectar contacto entre jugador y poder.
+#\details El método trata de detectar si hay algún contacto entre jugador y poder. Si lo hay, identififica cuál poder es y lo activa.
+#\param No recibe parametros
+#\return No retorna
     def recolectarPoder(self):
         """"""
         colisionJugadorConPoder = pygame.sprite.spritecollide(self.tanqueJugador, self.grupoPoderes, True, pygame.sprite.collide_rect)
@@ -92,6 +114,10 @@ class LaberintoBattleCity(ME_Laberinto):
                 elif(isinstance(poder, PoderVidaExtra)):
                     poder.activarPoder(self.tanqueJugador)
 
+## Dibuja en pantalla los elementos que contiene el laberinto 
+#\details Laberinto invoca el método draw de cada grupo que contiene para que aparezcan en pantalla
+#\param objetos pantalla y controlador 
+#\return No retorna
     def draw(self, controlador, pantalla):
 
         if(not controlador.menuAbierto):
@@ -102,7 +128,11 @@ class LaberintoBattleCity(ME_Laberinto):
             self.grupoPoderes.draw(pantalla)
             self.interfaz.draw(pantalla, self)
 
-
+##Este método se usa para poder cargar los distintos niveles que contiene el juego
+#\details Primero, el método determina con un número al azar qué ruta del archivo tomar para generar el nivel. Cuando lo determina, el laberinto abre el archivo y empieza añadir bloques a los atributos grupos
+#según los carácteres que encuentra en los archivos. Luego, crea un muro fuera de pantalla para impedir que los elementos salgan de los limites del laberinto.  
+#\param No recibe parametros
+#\return No retorna
     def cargarNivel(self):
         self.nivel = random.randint(1, 5)
 
@@ -162,6 +192,10 @@ class LaberintoBattleCity(ME_Laberinto):
         super().cargarNivel(archivo)
 
 
+##Método que sirve para que el laberinto capture eventos del teclado del jugador
+#\details Este método cambia el comportamiento del tanque jugador según la tecla que el jugador presione, o bien activa la pantalla de pausa.
+#\param evento, que contiene la información del evento y un controlador.
+#\return No retorna.
     def evento(self, controlador, evento):
         """"""
         if(evento.type == pygame.KEYDOWN):
@@ -195,8 +229,12 @@ class LaberintoBattleCity(ME_Laberinto):
 
         super().evento(controlador, evento)
 
+##Método para verificar que la posición para generar un tanque sea válida
+#\details Este método es convocado para generar tanques enemigos en lugares dentro del limite del mapa
+#\param x,y, coordenadas para determinar posicion valida
+#\return dupla de enteros
     def verificarPosicion(self, x, y):
-        """Método para verificar que la posición para generar un tanque sea válida"""
+        """"""
 
         posicionValida = False
 
@@ -209,6 +247,11 @@ class LaberintoBattleCity(ME_Laberinto):
 
         return (randY, randX)
 
+##Método que es usado para agregar tanques enemigos al azar
+#\details Primero, 3 datos son generados al azar, randTanque, randVariocolor y (x,y). Los dos primeros serán usados para determinar el tipo de tanque y si contendrá algún poder.
+#(x,y) es una dupla generada por verificarPosicion que devuelve una dupla que representa un espacio válido para generar el tanque enemigo. 
+#\param Ninguno
+#\return Un objeto tipo tanque enemigo
     def agregarTanqueEnemigo(self):
         """Método para retornar un tanque enemigo aleatorio"""
 
@@ -239,9 +282,12 @@ class LaberintoBattleCity(ME_Laberinto):
             tanqueEnemigo = TanqueEnemigo(self.tamanio*x, self.tamanio*y, self.tamanio, esVariocolor, 1)
 
         return tanqueEnemigo
-
+##Método para generar enemigos aleatoriamente
+#\details El método genera enemigos si el contador de enemigos sea inferior a constante MAX_ENEMIGOS 
+#\param Ninguno
+#\return No retorna
     def generarEnemigos(self):
-        """Método para generar tanques enemigos aleatoriamente"""
+        """"""
 
         if(len(self.grupoEnemigos) < MAX_ENEMIGOS):
             self.contadorGenerarEnemigos += 1
@@ -249,7 +295,10 @@ class LaberintoBattleCity(ME_Laberinto):
                 self.contadorGenerarEnemigos = 0
 
                 self.grupoEnemigos.add(self.agregarTanqueEnemigo())
-
+## Este método examina el estadoJuego para determinar la condición de victoria
+#\details -
+#\param No recibe parametros
+#\return Retorna el estado de juego
     def consultarEstadoJuego(self):
         """Método para consultar el estado actual del juego"""
         
@@ -262,8 +311,8 @@ class LaberintoBattleCity(ME_Laberinto):
         elif self.medallaEnemiga.rescadasRestantes <= 0:
             estado = EstadoJuego.Ganar
         return estado
-
+##Método para reiniciar el laberinto
     def resetear(self):
-        """Método para reiniciar el laberinto"""
+        """"""
 
         self.__init__(self.tamanio ,self.tamanioPantalla)
