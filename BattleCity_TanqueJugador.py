@@ -87,7 +87,7 @@ class TanqueJugador(ME_Avatar_Controlable):
 
     ## Carga sprites para el tanque enemigo cuendo muere
     # \details Carga sprites para el tanque enemigo cuendo muere
-    # \param
+    # \param no parametro requerido
     #\return no retorna valor
     def cargarSpritesMuerte(self):
         """Método para animar la muerte de los tanques"""
@@ -96,7 +96,7 @@ class TanqueJugador(ME_Avatar_Controlable):
 
     ## Carga sprites para el tanque enemigo cuendo muere
     # \details Carga sprites para el tanque enemigo cuendo muere
-    # \param
+    # \param no parametro requerido
     #\return no retorna valor
     def reaparecer(self):
         """Método para reaparecer el tanque"""

@@ -8,6 +8,10 @@ ajusteDeColision = 15
 class ME_Avatar(ME_Entidad):
     """Clase genérica para los tipos de avatar"""
 
+    ## Constructor
+    # \details Constructor de la clase
+    # \param x , y: posiciones en la pantalla de juego,taman: tamanio del sprite
+    #\return No return value
     def __init__(self, x, y, tamanio):
         """Constructor"""
 
@@ -33,6 +37,10 @@ class ME_Avatar(ME_Entidad):
         self.contadorAnimacionMovimiento = 0
         self.contadorAnimacionMuerte = 0
 
+    ## Actualiza del estado del avatar
+    # \details Actualiza del estado del avatar incluyendo su moviento actual
+    # \param  no parametro requerido
+    #\return no retorna valor
     def update(self):
         """"""
         if self.velocidadActualX != 0 or self.velocidadActualY != 0:
@@ -43,9 +51,12 @@ class ME_Avatar(ME_Entidad):
         self.rect.x += self.velocidadActualX * self.velocidadMaxima
         self.rect.y += self.velocidadActualY * self.velocidadMaxima
 
-
+    ## Animación del avatar
+    # \details Actualiza del estado del sprite para el avatar
+    # \param  no parametro requerido
+    #\return no retorna valor
     def animarAvatar(self):
-        """Método para animar al tanque"""
+        """Método para animar al avatar"""
 
         if self.vivo:
             if (self.moviendose):

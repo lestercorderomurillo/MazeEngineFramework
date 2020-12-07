@@ -118,7 +118,7 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
 
     ## Carga sprites para el tanque enemigo cuendo muere
     # \details Carga sprites para el tanque enemigo cuendo muere
-    # \param
+    # \param no parametro requerido
     #\return no retorna valor
     def cargarSpritesMuerte(self):
         """Método para animar la muerte de los tanques enemigos"""

@@ -15,6 +15,10 @@ class Bando(enum.IntEnum):
 class ME_Entidad(pygame.sprite.Sprite):
     """Clase genérica para las entidades del juego"""
 
+    ## Constructor
+    # \details Constructor de la clase
+    # \param x , y: posiciones en la pantalla de juego,,taman: tamanio del sprite
+    #\return No return value
     def __init__(self, x, y, taman):
         """Constructor"""
 
@@ -25,11 +29,19 @@ class ME_Entidad(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
+    ## Carga sprites
+    # \details  Carga sprites para que se vean en la pantalla
+    # \param nombreArchivo: nombre del archivo del que se cargara el sprite
+    #\return no retorna valor
     def cargarSprite(self, nombreArchivo):
         """Método para cargar el sprite a utilizar"""
 
         self.spriteSheet = pygame.image.load(nombreArchivo).convert()
 
+    ## Carga sprites para que realize una animación
+    # \details  Carga sprites para que se actualizen los objetos actuales
+    # \param x, y: posiciones en la pantalla , anchura: ancho del sprite, altura: alto del sprite
+    #\return actualizacion de sprite
     def crearAnimacion(self, x, y, anchura, altura ):
         """Método para seleccionar cierto componente dentro del sprite"""
 
