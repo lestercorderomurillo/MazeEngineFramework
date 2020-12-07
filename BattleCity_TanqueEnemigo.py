@@ -27,7 +27,7 @@ class TanqueEnemigo(ME_Avatar_Autonomo):
     # \details Constructor de la clase
     # \param x , y: posiciones en la pantalla de juego, tamanio: del sprite,
     # esVarioColor: si tanque crea poder al morir, tipoTanque: tipo del tanque
-    #\return No return value
+    #\return no retorna valor
     def __init__(self, x, y, tamanio, esVariocolor, tipoTanque):
         """Constructor"""
 

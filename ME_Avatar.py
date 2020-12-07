@@ -11,7 +11,7 @@ class ME_Avatar(ME_Entidad):
     ## Constructor
     # \details Constructor de la clase
     # \param x , y: posiciones en la pantalla de juego,taman: tamanio del sprite
-    #\return No return value
+    #\return no retorna valor
     def __init__(self, x, y, tamanio):
         """Constructor"""
 

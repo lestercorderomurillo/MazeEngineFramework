@@ -12,7 +12,7 @@ class ME_Controlador():
     ## Constructor
     # \details Constructor de la clase
     # \param taman: tamanio para sprites
-    #\return No return value
+    #\return no retorna valor
     def __init__(self, nombre, anchura, altura):
         """Constructor"""
         self.iniciarPyGame()
@@ -28,7 +28,7 @@ class ME_Controlador():
     ## Inicia la ejecucion de pygame
     # \details Despliega la pantalla inicial
     # \param no requiere parametros
-    #\return No return value
+    #\return no retorna valor
     def iniciarPyGame(self):
         os.environ['SDL_VIDEO_WINDOW_POS'] = 'center'
         pygame.mixer.init(44100, -16, 1, 512)
@@ -38,7 +38,7 @@ class ME_Controlador():
     ## Inicia el despliegue para la pantalla inicial para el juego
     # \details Despliega la pantalla inicial para el juego
     # \param nombre: nombre del juego, anchura, altura
-    #\return No return value
+    #\return no retorna valor
     def iniciarVentana(self, nombre, anchura, altura):
         self.pantalla = pygame.display.set_mode(self.tamanioPantalla)
         pygame.display.set_caption(nombre)
@@ -50,7 +50,7 @@ class ME_Controlador():
     ## Ejecución del juego
     # \details Metodo que contieno lógica de ejecución del juego
     # \param no requiere parametros
-    #\return No return value
+    #\return no retorna valor
     def ejecutar(self):
         self.sonidoEmpezarJuego.play()
         while(self.ejecutandoJuego):
@@ -96,7 +96,7 @@ class ME_Controlador():
     ## Dibuja los el laberinto y el menu del juego
     # \details permite el despliegue de la vistas del laberinto y el menu
     # \param no requiere parametros
-    #\return No return value
+    #\return no retorna valor
     def draw(self):
         self.laberinto.draw(self, self.pantalla)
         self.menu.draw(self, self.pantalla)

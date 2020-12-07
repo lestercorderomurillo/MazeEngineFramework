@@ -20,7 +20,7 @@ class TanqueJugador(ME_Avatar_Controlable):
     # \details Constructor de la clase
     # \param x , y: posiciones en la pantalla de juego
     # \param tamanio: del sprite
-    #\return No return values
+    #\return No retorna valor
     def __init__(self, x, y, taman):
         """Constructor"""
         super().__init__(x, y, taman)

@@ -6,7 +6,7 @@ class ME_Laberinto():
     ## Constructor
     # \details Constructor de la clase
     # \param taman: tamanio para sprites
-    #\return No return value
+    #\return no retorna valor
     def __init__(self,taman):
 
         self.tamanio=taman
@@ -20,7 +20,7 @@ class ME_Laberinto():
     # \details Carga el nivel para el inicio del juego, con base al archivo en
     # la direccion dada por parametro archivo
     # \param archivo: direccion de archivo con datos para cargar el nivel actual
-    #\return No return value
+    #\return no retorna valor
     def cargarNivel(self, archivo):
         datos = open(archivo, "r")
         y = 0

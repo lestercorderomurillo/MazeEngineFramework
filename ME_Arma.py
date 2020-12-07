@@ -8,7 +8,7 @@ class ArmaMarda(ME_Entidad):
     ## Constructor
     # \details Constructor de la clase
     # \param x , y: posiciones en la pantalla de juego,direccion: direccion del sprite ,tamanio: tamanio del sprite
-    #\return No return value
+    #\return no retorna valor
     def __init__(self, x, y, direccion, tamanio):
         """Constructor"""
         super().__init__(x, y, tamanio)

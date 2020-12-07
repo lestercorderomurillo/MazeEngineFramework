@@ -6,7 +6,7 @@ class PoderVidaExtra(PoderAbstracto):
     ## Constructor
     # \details Constructor de la clase
     # \param x , y: posiciones en la pantalla de juego, tamanio: del sprite
-    #\return No return value
+    #\return No retorna valor
     def __init__(self, x, y, tamanio):
         """Constructor"""
 
