@@ -59,7 +59,7 @@ class MenuBattleCity(ME_Menu):
                             else:
                                 self.estadoActual = Menu.MenuPrincipal3
 
-0            elif(evento.key == pygame.K_RETURN):
+            elif(evento.key == pygame.K_RETURN):
                 if(controlador.menuAbierto and controlador.ejecutandoInicio):
                     if(self.estadoActual ==  Menu.MenuPrincipal1):
                         self.estadoActual = Menu.Reglas

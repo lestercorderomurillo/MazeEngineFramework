@@ -10,7 +10,7 @@ class BloqueMetalico(BloqueAbstracto):
 #\details Este método construye una instancia de la clase BloqueMetalico. Establece la cantidad de disparos que un BloqueMetalico recibirá antes de destruirse. También asigna al bloque metálico un sprite.    
 #\param x,y y tamanio, que determinan posicion y dimensiones del bloque
 #\return No retorna valor alguno   
-   def __init__(self, x, y, tamanio):
+    def __init__(self, x, y, tamanio):
  
         super().__init__(x, y, tamanio)
         self.image = self.crearAnimacion(32*14, 32*1, 32, 32)

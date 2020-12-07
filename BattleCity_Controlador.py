@@ -1,16 +1,16 @@
 ## @package ControladorBattleCity
 #La clase que reune todas las demás clases y realiza la ejecución del programa BattleCity
-rom ME_Controlador import ME_Controlador
+from ME_Controlador import ME_Controlador
 from BattleCity_Laberinto import LaberintoBattleCity
 from BattleCity_Menu import MenuBattleCity
 import pygame
 
 
 class ControladorBattleCity(ME_Controlador):
-## Constructor de la clase ControladorBattleCity
-#\details El tamaño de las ventanas es definido con tamanioPantalla, así como los sonidos del controlador
-#\param No recibe parametros
-#\return No retorna
+    ## Constructor de la clase ControladorBattleCity
+    #\details El tamaño de las ventanas es definido con tamanioPantalla, así como los sonidos del controlador
+    #\param No recibe parametros
+    #\return No retorna
     def __init__(self):
         """Constructor"""
 
