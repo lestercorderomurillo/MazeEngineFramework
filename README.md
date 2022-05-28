@@ -1,4 +1,4 @@
-# MazeEngineFramwork
+# MazeEngineFramework
 Un simple framework de práctica para construir juegos de laberintos.
 El prototipo posee incluido un juego de prueba, en este caso, el BattleCityRemasterizado usando el framework.
 
